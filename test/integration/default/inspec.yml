@@ -1,0 +1,6 @@
+name: default 
+attributes:
+- name: bucket_name 
+- name: bucket_id
+- name: bucket_arn 
+- name: bucket_domainname 
