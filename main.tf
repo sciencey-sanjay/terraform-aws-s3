@@ -6,7 +6,7 @@ terraform {
   required_providers {
     mycloud = {
       source  = "hashicorp/aws"
-      version = "~> 2.7.0"
+      version = "~> 4.61.0"
     }
   }
 }
