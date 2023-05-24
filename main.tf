@@ -3,12 +3,25 @@
 # Provider
 
 terraform {
+  cloud {
+    organization = "devopsy_sanjay"
+    hostname = "app.terraform.io" # Optional; defaults to app.terraform.io
+
+    workspaces {
+      name = "terraform-aws-s3"
+    }
+  }
+
   required_providers {
-    mycloud = {
+    aws = {
       source  = "hashicorp/aws"
       version = "~> 4.61.0"
     }
   }
+}
+
+provider "aws" {
+  region = var.aws_region 
 }
 
 data "aws_iam_policy_document" "s3_policy" {
@@ -23,9 +36,6 @@ data "aws_iam_policy_document" "s3_policy" {
   }
 }
 
-provider "mycloud" {
-  region = var.aws_region 
-}
 resource "aws_s3_bucket" "b" {
   bucket = var.bucketname
   acl    = var.aclvalue 
